@@ -1,0 +1,145 @@
+<%- include("navbar.ejs") %>
+<!-- PAGE TITLE -->
+<div class="row">
+    <div class="col-md-12">
+        <h2 class="title-1">Dashboard Overview</h2>
+    </div>
+</div>
+
+<!-- STATISTICS CARDS -->
+<div class="row m-t-25">
+    <div class="col-sm-6 col-lg-3">
+        <div class="overview-item overview-item--c1">
+            <div class="overview__inner">
+                <div class="overview-box clearfix">
+                    <div class="icon">
+                        <i class="zmdi zmdi-shopping-cart"></i>
+                    </div>
+                    <div class="text">
+                        <h2>1248</h2>
+                        <span>Total Orders</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-3">
+        <div class="overview-item overview-item--c2">
+            <div class="overview__inner">
+                <div class="overview-box clearfix">
+                    <div class="icon">
+                        <i class="zmdi zmdi-store"></i>
+                    </div>
+                    <div class="text">
+                        <h2>320</h2>
+                        <span>Total Products</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-3">
+        <div class="overview-item overview-item--c3">
+            <div class="overview__inner">
+                <div class="overview-box clearfix">
+                    <div class="icon">
+                        <i class="zmdi zmdi-money"></i>
+                    </div>
+                    <div class="text">
+                        <h2>₹4.85L</h2>
+                        <span>Total Revenue</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-3">
+        <div class="overview-item overview-item--c4">
+            <div class="overview__inner">
+                <div class="overview-box clearfix">
+                    <div class="icon">
+                        <i class="zmdi zmdi-alert-circle"></i>
+                    </div>
+                    <div class="text">
+                        <h2>18</h2>
+                        <span>Pending Orders</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- RECENT ORDERS -->
+<div class="row m-t-30">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">Recent Orders</strong>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-borderless table-striped">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#ORD1021</td>
+                                <td>Rahul Patil</td>
+                                <td>₹1,999</td>
+                                <td><span class="badge bg-success">Delivered</span></td>
+                            </tr>
+                            <tr>
+                                <td>#ORD1022</td>
+                                <td>Sneha Joshi</td>
+                                <td>₹849</td>
+                                <td><span class="badge bg-warning">Pending</span></td>
+                            </tr>
+                            <tr>
+                                <td>#ORD1023</td>
+                                <td>Amit Shah</td>
+                                <td>₹2,499</td>
+                                <td><span class="badge bg-danger">Cancelled</span></td>
+                            </tr>
+                            <tr>
+                                <td>#ORD1024</td>
+                                <td>Neha Kulkarni</td>
+                                <td>₹1,299</td>
+                                <td><span class="badge bg-info">Shipped</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- LOW STOCK ALERT -->
+<div class="row m-t-30">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">Low Stock Products</strong>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>Bluetooth Speaker – <strong>4 left</strong></li>
+                    <li>Wireless Mouse – <strong>8 left</strong></li>
+                    <li>Mobile Cover – <strong>5 left</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("footer.ejs") %>            

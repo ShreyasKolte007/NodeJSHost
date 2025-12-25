@@ -1,0 +1,198 @@
+<%-include("navbar.ejs")%>
+    <div class="container-fluid bg-white p-4">
+        <div class="cart-page">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="container1">
+                        <h2>Shopping Cart</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Product Name</th>
+                                    <th>Size</th>
+                                    <th>Qty</th>
+                                    <th>Price</th>
+                                    <th>Total</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <% var sum=0 %>
+                                    <% cart.map(function(val,i){ %>
+                                        <tr>
+                                            <td><img src="/upload/<%=val.product_image1%>" class="product-img"></td>
+                                            <td>
+                                                <%=val.product_name%>
+                                            </td>
+                                            <td>
+                                                <%=val.product_size%>
+                                            </td>
+                                            <td><button style="margin-right:10px; background-color:blue" onclick="decrease('<%=val.cart_id%>')">-</button><input type="number" min="1" class="qty-input"
+                                                    value="<%=val.qty%>"><button style="margin-left:10px; background-color: blue;" onclick="increase('<%=val.cart_id%>')">+</button></td>
+                                            <td>₹<%=val.product_price%>
+                                            </td>
+                                            <td>₹<%=val.product_price * val.qty%>
+                                            </td>
+                                            <td><a href="/cart_remove/<%=val.cart_id%>" class="remove-btn" style="color:red">Remove</a></td>
+                                        </tr>
+                                        <% sum +=(val.product_price * val.qty)%>
+                                            <% }) %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- <div class="col-md-3">
+                    <span style="display:flex;">
+                        <b>Order Summary</b>
+                    </span>
+                    <hr>
+                    <% cart.map(function(val,i){ %>
+                        <span style="display:flex;">
+                            <p><%=val.product_name%></p>
+                            <p style="margin-left:200px;">&#8377;<%=val.product_price * val.qty%></p>
+                        </span>
+                    <% }) %>
+                    
+                    <hr>
+                    <span style="display:flex;margin-bottom:40px;">
+                        <b>Total</b>
+                        <b style="margin-left:250px;">&#8377;<%=sum%></b>
+                    </span>
+                Select Your Payment Type
+                <select name="form-control" name="payment_type" id="">
+                    <option value="">Select Your Payment Type</option>
+                    <option value="">Online Payment</option>
+                    <option value="">Cash On Delivery</option>
+                </select>
+                </div> -->
+                <div class="col-md-11">
+                    <div class="cart-footer">
+                        <div class="total-box">
+                            <h3>Grand Total: ₹<%=sum%>
+                            </h3>
+                            <button class="checkout-btn"><a href="/checkout">PROCEED TO CHECKOUT</a></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function increase(cart_id){
+            var url = `/qtyincrease/`+cart_id;
+            location.href = url; 
+        }
+        
+        function decrease(cart_id){
+            var url = `/decrease/`+cart_id;
+            location.href = url;
+        }
+    </script>
+    <style>
+        .cart-page .container1 {
+            width: 90%;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+        }
+
+        .cart-page h2 {
+            color: #333;
+        }
+
+        .cart-page table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .cart-page thead {
+            background: #2c2c2c;
+            color: #fff;
+        }
+
+        .cart-page thead th {
+            padding: 12px;
+            text-align: center;
+            font-weight: normal;
+        }
+
+        .cart-page tbody td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            color: #444;
+        }
+
+        .cart-page .product-img {
+            width: 60px;
+            height: 60px;
+            border: 1px solid #ccc;
+            display: inline-block;
+            background: #eee;
+        }
+
+        .cart-page .qty-input {
+            width: 80px;
+            padding: 5px;
+            text-align: center;
+        }
+
+        .cart-page .remove-btn {
+            color: #c0392b;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .cart-page .remove-btn:hover {
+            text-decoration: underline;
+        }
+
+        .cart-page .cart-footer {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .cart-page .total-box {
+            text-align: right;
+        }
+
+        .cart-page .total-box h3 {
+            margin: 0 0 10px;
+            color: #333;
+        }
+
+        .cart-page .checkout-btn {
+            background: #2ecc71;
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        .cart-page .checkout-btn:hover {
+            background: #27ae60;
+        }
+
+        @media (max-width: 768px) {
+
+            .cart-page table,
+            .cart-page thead,
+            .cart-page tbody,
+            .cart-page th,
+            .cart-page td,
+            .cart-page tr {
+                font-size: 14px;
+            }
+        }
+    </style>
+
+    <%-include("footer.ejs")%>

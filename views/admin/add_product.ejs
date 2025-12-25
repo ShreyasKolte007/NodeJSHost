@@ -1,0 +1,99 @@
+<%-include("navbar.ejs")%>
+
+<div class="container-fluid bg-white p-4">
+<form action="/admin/save_product" method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row">
+            <h1>Add Products</h1>
+            <div class="col-md-6 mt-3">
+               Product Category <b class="text-danger">*</b>
+                <!-- <input class="form-control" type="text" name="product_category" id="" required> -->
+                <select class="form-control" name="product_category" id="">
+                    <% category.map(function(val,i){ %>
+                        <option value="<%=val.id%>"><%=val.category_name%></option>
+                    <% }) %>
+                </select> 
+            </div>
+
+            <div class="col-md-6 mt-3">
+               Product name <b class="text-danger">*</b>
+                <input class="form-control" type="text" name="product_name" id="" required>
+            </div>
+            <div class="col-md-6 mt-3">
+               Product Company <b class="text-danger">*</b>
+               <input class="form-control" type="text" name="product_company" id="" required list="data">
+            </div>
+            <datalist id="data">
+                <opiton>Nike</opiton>
+                <option>Adidas</optiton>
+                <option>Puma</option>   
+                <option>Spike</option>
+            </datalist>
+            <div class="col-md-6 mt-3">
+                Color <b class="text-danger">*</b>
+                <input class="form-control" type="text" name="color" id="" required>
+            </div>
+            <div class="col-md-6 mt-3">
+                Product Label <b class="text-danger">*</b>
+                <select class="form-control" name="product_label" id="" required>
+                    <option></option>
+                    <option value="featured">Featured</option>
+                    <option value="best_selling">Best Selling</option>
+                    <option value="flash">Flash</option>
+                </select>
+            </div>
+            <div class="col-md-6 mt-3">
+                Image 1 <b class="text-danger">*</b>
+                <input class="form-control" type="file" name="image1" id="" required>
+            </div>
+            <div class="col-md-6 mt-3">
+                Image 2 <b class="text-danger">*</b>
+                <input class="form-control" type="file" name="image2" id="" required>
+            </div>
+            <div class="col-md-6 mt-3">
+                Image 3
+                <input class="form-control" type="file" name="image3" id="">
+            </div>
+            <div class="col-md-6 mt-3">
+                Image 4
+                <input class="form-control" type="file" name="image4" id="">
+            </div>
+        </div>
+        </div>
+        <div class="col-md-4">
+            <h1>Product Price</h1>
+            <div class="row">
+                <div class="col-md-12 mt-3">
+                    <table class="table table-sm table-striped table-bordered text-center">
+                        <tr>
+                            <th>Size</th>
+                            <th>Price</th>
+                            <th>Duplicate Price</th>
+                        </tr>
+                        <% 
+                        var sizes = ['XS','S','M','L','XL','XXL'];
+                        for(var i=0;i<sizes.length;i++){ %> 
+                            
+                       <tr>
+                            <td><input readonly class="form-control text-center" value="<%=sizes[i]%>" type="text" name="product_size" id=""></td>
+                            <td><input class="form-control" type="text" name="product_price" id=""></td>
+                            <td><input class="form-control" type="text" name="product_duplicate_price" id=""></td>
+                        </tr>
+
+                        <% } %>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 mt-3">
+        Product Details <b class="text-danger">*</b>
+        <textarea class="editor" name="product_details"></textarea>
+    </div>
+    <div class="col-md-12 text-center mt-3">
+        <button class="btn btn-primary">Add Product</button>
+    </div>
+</form>
+</div>
+<%-include("footer.ejs")%>    

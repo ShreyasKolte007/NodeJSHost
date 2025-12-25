@@ -1,0 +1,72 @@
+<script src="https://kit.fontawesome.com/b2796289bd.js" crossorigin="anonymous"></script>
+<%- include("navbar.ejs") %>
+<div class="container-fluid bg-white p-4">
+    <h1>Add Slider</h1>
+
+    <form action="/admin/slider" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-4 mt-4">
+                Enter Title
+                <input class="form-control" type="text" name="slider_title" id="">
+            </div>
+
+            <div class="col-md-8 mt-4">
+                Details
+                <textarea class="form-control" name="slider_details" id=""></textarea>
+            </div>
+
+            <div class="col-md-4 mt-4">
+                Button URL
+                <input class="form-control" type="text" name="button_link" id="">
+            </div>
+
+            <div class="col-md-4 mt-4">
+                Button Text
+                <input class="form-control" type="text" name="button_text" id="">
+            </div>
+            
+            <div class="col-md-4 mt-4">
+                Slider image
+                <input class="form-control" type="file" name="slider_image" id="">
+            </div>
+
+            <div class="col-md-12 text-center mt-5">
+                <button class="btn btn-primary">Add Slider</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="container-fluid bg-white mt-3 p-4">
+    <h1>Slider List</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <table  class="table table-striped table-bordered">
+                <tr>
+                    <th>Sr. No</th>
+                    <th>Slider Title</th>
+                    <th>Slider Details</th>
+                    <th>Button URL</th>
+                    <th>Button Text</th>
+                    <th>Slider Image</th>
+                    <th>Action</th>
+                </tr>
+                <% slider.map(function(item,i){ %>
+                <tr class="mt-1">
+                    <td><%=i+1%></td>
+                    <td><%=item.slider_title%></td>
+                    <td><%=item.slider_details%></td>
+                    <td><%=item.button_link%></td>
+                    <td><%=item.button_text%></td>
+                    <td><img src="/<%=item.slider_image%>" width="100" alt=""></td>
+                    <td>
+                        <a class="btn btn-danger mt-1" href="/admin/delete_slider/<%=item.id%>"><i class="fa-solid fa-trash"></i></a>
+                        <a class="btn btn-primary mt-1" href="/admin/edit_slider/<%=item.id%>"><i class="fa-solid fa-pen"></i></a>
+                    </td>
+                </tr>
+                <% }) %>
+            </table>
+        </div>
+    </div>
+</div>
+<%- include("footer.ejs") %>

@@ -1,0 +1,54 @@
+<%-include("navbar.ejs")%>
+<div class="container-fluid bg-white p-4">
+    <h1>About Company</h1>
+
+    <form action="/admin/about_company" method="post">
+
+    <div class="row">
+        <div class="col-md-4 mt-4">
+            Company name
+            <input class="form-control" value="<%=about_company[0].company_name%>" type="text" name="company_name" id="">
+        </div>
+
+        <div class="col-md-4 mt-4">
+            Mobile
+            <input class="form-control" value="<%=about_company[0].company_mobile%>" type="number" name="company_mobile" id="">
+        </div>
+
+        <div class="col-md-4 mt-4">
+            Email
+            <input class="form-control" value="<%=about_company[0].company_email%>" type="email" name="company_email" id="">
+        </div>
+        
+        <div class="col-md-12 mt-4">
+            Company Address
+            <textarea class="form-control" name="address" id=""><%=about_company[0].address%></textarea>
+        </div>
+
+        <div class="col-md-3 mt-4">
+            WhatsApp No
+            <input class="form-control" value="<%=about_company[0].whatsapp%>" type="number" name="whatsapp" id="">
+        </div>
+
+        <div class="col-md-3 mt-4">
+            Linkedin Link
+            <input class="form-control" value="<%=about_company[0].linkedin%>" type="text" name="linkedin" id="">
+        </div>
+
+        <div class="col-md-3 mt-4">
+            Facebook Link
+            <input class="form-control" value="<%=about_company[0].facebook%>" type="text" name="facebook" id="">
+        </div>
+
+        <div class="col-md-3 mt-4">
+            Youtube Link
+            <input class="form-control" value="<%=about_company[0].youtube%>" type="text" name="youtube" id="">
+        </div>
+
+        <div class="col-md-12 text-center mt-5">
+            <button class="btn btn-primary">Save Company</button>
+        </div>
+    </div>
+    </form>
+</div>
+<%-include("footer.ejs")%>

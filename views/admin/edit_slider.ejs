@@ -1,0 +1,43 @@
+<%-include("navbar.ejs")%>
+<div class="container-fluid bg-white p-4">
+    <h1>Update Slider</h1>
+
+    <form action="/admin/update_slider" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-4 mt-4">
+                Enter Title
+                <input value="<%=slider_info[0].id%>" type="text" name="id" id="">
+                <input class="form-control" type="text" value="<%=slider_info[0].slider_title%>" name="slider_title" id="">
+            </div>
+
+            <div class="col-md-8 mt-4">
+                Details
+                <textarea class="form-control" name="slider_details" id=""><%=slider_info[0].slider_details%></textarea>
+            </div>
+
+            <div class="col-md-3 mt-4">
+                Button URL
+                <input class="form-control" type="text" value="<%=slider_info[0].button_link%>" name="button_link" id="">
+            </div>
+
+            <div class="col-md-3 mt-4">
+                Button Text
+                <input class="form-control" type="text" value="<%=slider_info[0].button_text%>" name="button_text" id="">
+            </div>
+            
+            <div class="col-md-3 mt-4">
+                Slider image
+                <input class="form-control" type="file" value="<%=slider_info[0].slider_image%>" name="slider_image" id="">
+            </div>
+
+            <div class="col-md-2 mt-3">
+                <img style="height:100px;width:100%;" src="/<%=slider_info[0].slider_image%>" alt="">
+            </div>
+
+            <div class="col-md-12 text-center mt-5">
+                <button class="btn btn-primary">Update Slider</button>
+            </div>
+        </div>
+    </form>
+</div>
+<%-include("footer.ejs")%>

@@ -1,0 +1,80 @@
+<%-include("navbar.ejs")%>
+<form action="/order" method="post">
+    <div style="margin-top:50px;" class="container-fluid bg-white p-4">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-6">
+                                Enter Name <br>
+                                <input class="form-control" type="text" name="customer_name" id="">
+                            </div>
+                            <div class="col-md-6">
+                                Enter Mobile <br>
+                                <input class="form-control" type="number" name="customer_mobile" id="">
+                            </div>
+                            <div class="col-md-6">
+                                Enter State <br>
+                                <input class="form-control" type="text" name="state" id="">
+                            </div>
+                            <div class="col-md-6">
+                                Enter District <br>
+                                <input class="form-control" type="text" name="district" id="">
+                            </div>
+                            <div class="col-md-6">
+                                Enter City <br>
+                                <input class="form-control" type="text" name="city" id="">
+                            </div>
+                            <div class="col-md-6">
+                                Enter Area <br>
+                                <input class="form-control" type="text" name="area" id="">
+                            </div>
+                            <div class="col-md-6">
+                                Enter LandMark <br>
+                                <input class="form-control" type="text" name="landmark" id="">
+                            </div>
+                            <div class="col-md-6">
+                                Enter Pincode <br>
+                                <input class="form-control" type="number" name="pincode" id="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <span style="display:flex;">
+                            <b>Order Summary</b>
+                        </span>
+                        <hr>
+                        <% var sum=0 %>
+                            <% cart.map(function(val,i){ %>
+                                <span style="display:flex;">
+                                    <p>
+                                        <%=val.product_name%> <b>X</b>
+                                            <%=val.qty%>
+                                    </p>
+                                    <p style="margin-left:325px;">&#8377;<%=val.product_price * val.qty%>
+                                    </p>
+                                </span>
+                                <% sum +=(val.product_price * val.qty) %>
+                                    <% }) %>
+                                        <hr>
+                                        <span style="display:flex;margin-bottom:40px;">
+                                            <p>Product Amount Total</p>
+                                            <p style="margin-left:325px;">&#8377;<%=sum%>
+                                            </p>
+                                        </span>
+                                        <select name="payment_type" class="form-control" id="">
+                                            <option value="Online">Online Payment</option>
+                                            <option value="Offline">Cash On Delivery</option>
+                                        </select>
+
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <button>Order Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+    <%-include("footer.ejs")%>
